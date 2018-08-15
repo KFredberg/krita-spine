@@ -243,7 +243,7 @@ class SpineTools(DockWidget):
         return offset
 
     def saveJson(self, content, name):
-        if not name:
+        if name is None:
             name = 'spine.json'
         with open('{0}/{1}'.format(self.directory, name), 'w') as jsonFile:
             json.dump(content, jsonFile, indent=2)
@@ -285,7 +285,7 @@ class SpineTools(DockWidget):
                             "root", rootOffset['x'], rootOffset['y'])
             Krita.instance().setBatchmode(False)
             self.addRotationAndLengthToBones()
-            self.saveJson(self.json)
+            self.saveJson(self.json, None)
 
     def alert(self, message):
         output = ''
